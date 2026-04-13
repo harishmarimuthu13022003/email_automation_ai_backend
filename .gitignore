@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv
+env/
+venv/
+ENV/
+
+# Environment Variables (CRITICAL)
+.env
+
+# Storage
+static/invoices/*.pdf
+logs/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

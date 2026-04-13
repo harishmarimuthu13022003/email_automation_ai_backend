@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+motor
+pydantic
+pydantic-settings
+crewai
+langchain-groq
+fpdf2
+imap-tools
+python-dotenv
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+email-validator
+requests
+dnspython
