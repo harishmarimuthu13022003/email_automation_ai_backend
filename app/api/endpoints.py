@@ -58,6 +58,11 @@ async def get_leads():
 @router.post("/process-email")
 async def process_emails():
     try:
+        print(f"🚀 AI Agent Triggered. Looking for user: {settings.FINANCE_EMAIL or 'MISSING'}")
+        if not settings.FINANCE_EMAIL or not settings.EMAIL_PASSWORD:
+            print("❌ ERROR: Email Credentials missing in Environment Variables!")
+            return {"status": "error", "message": "Credentials missing", "processed_count": 0}
+            
         emails = EmailService.fetch_emails()
         processed = []
         for email in emails:
