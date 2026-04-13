@@ -3,6 +3,7 @@ from ..models.schemas import InvoiceCreate, Invoice, Lead, EmailLog
 from ..core.database import get_collection
 from ..services.email_service import EmailService
 from ..services.agent_service import AgentService
+from ..core.config import settings
 from datetime import datetime
 import asyncio
 
