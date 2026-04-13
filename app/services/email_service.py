@@ -45,7 +45,11 @@ class EmailService:
         try:
             print(f"Connecting to IMAP: {settings.IMAP_SERVER}...")
             # Use 'seen=False' to only get unread emails
-            with MailBox(settings.IMAP_SERVER).login(settings.FINANCE_EMAIL, settings.EMAIL_PASSWORD) as mailbox:
+            mailbox = MailBox(settings.IMAP_SERVER)
+            print(f"📡 IMAP: Attempting login for {settings.FINANCE_EMAIL}...")
+            mailbox.login(settings.FINANCE_EMAIL, settings.EMAIL_PASSWORD)
+            print("✅ IMAP: Connection Successful!")
+            with mailbox:
                 for msg in mailbox.fetch(AND(seen=False), limit=20, reverse=True): 
                     # 🛡️ LAYER 1: Ignore emails sent by the Bot itself
                     if msg.from_.lower() == settings.FINANCE_EMAIL.lower():
