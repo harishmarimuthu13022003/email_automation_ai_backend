@@ -30,10 +30,12 @@ class EmailService:
                     part['Content-Disposition'] = f'attachment; filename="{os.path.basename(attachment_path)}"'
                     msg.attach(part)
 
-            with smtplib.SMTP(settings.SMTP_SERVER, settings.SMTP_PORT) as server:
+            print(f"📧 SMTP: Attempting to send email to {to_email} via smtp.gmail.com:587...")
+            with smtplib.SMTP("smtp.gmail.com", 587) as server:
                 server.starttls()
                 server.login(settings.FINANCE_EMAIL, settings.EMAIL_PASSWORD)
                 server.send_message(msg)
+            print(f"✅ Email sent successfully to {to_email}")
             return True
         except Exception as e:
             print(f"Error sending email: {e}")
