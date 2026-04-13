@@ -5,6 +5,7 @@ pydantic
 pydantic-settings
 crewai
 langchain-groq
+litellm
 fpdf2
 imap-tools
 python-dotenv
